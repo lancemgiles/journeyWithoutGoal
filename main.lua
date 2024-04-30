@@ -1,6 +1,7 @@
 function love.load()
   Object = require "lib/classic"
-  Player = require "player"
+  require "player"
+  player = Player()
   bg = love.graphics.newImage("assets/bg.png")
   music = love.audio.newSource('assets/aBeautifulAndGoodLife.ogg',
 		'stream')
@@ -14,11 +15,13 @@ end
 
 function love.update(dt)
   titleTimer(dt)
+  player:update(dt)
 end
   
 
 function love.draw()
   love.graphics.draw(bg, 0, 0)
+  player:draw()
   displayTitle()
 end
 
